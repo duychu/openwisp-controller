@@ -91,7 +91,7 @@ if not TESTING:
     CHANNEL_LAYERS = {
         'default': {
             'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {'hosts': ['redis://localhost/7']},
+            'CONFIG': {'hosts': ['redis://redis/7']},
         }
     }
 else:
@@ -133,7 +133,7 @@ if not TESTING:
     CACHES = {
         'default': {
             'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': 'redis://localhost/5',
+            'LOCATION': 'redis://redis/5',
             'OPTIONS': {'CLIENT_CLASS': 'django_redis.client.DefaultClient',},
         }
     }
@@ -150,7 +150,7 @@ OPENWISP_ADMIN_DASHBOARD_ENABLED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 if not TESTING:
-    CELERY_BROKER_URL = os.getenv('REDIS_URL', 'redis://localhost/1')
+    CELERY_BROKER_URL = os.getenv('REDIS_URL', 'redis://redis/1')
 else:
     CELERY_TASK_ALWAYS_EAGER = True
     CELERY_TASK_EAGER_PROPAGATES = True
